@@ -1,0 +1,151 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	background-color: #eaeded;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	font-size: 20px;
+	overflow-y: auto;
+	letter-spacing: 0.01rem;
+}
+
+.icon {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Navigation bar */
+ul#navbar {
+	text-align: center;
+	width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #333333;
+}
+
+ul#navbar > li {
+	display: inline-block;
+	margin: auto;
+}
+
+#navbar a {
+	float: none;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	margin: 10px 5px;
+	padding: 10px 25px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+#navbar a:hover,
+#navbar a.active {
+	background: #ddd;
+	color: black;
+	border-radius: 10px;
+}
+
+/* See more buttons */
+#see-projects {
+	font-size: large;
+	border-radius: 5px;
+	background-color: #acacac;
+}
+
+#see-projects:hover {
+	background: rgb(114, 114, 114);
+	color: black;
+}
+
+/* For line through topic */
+h2 {
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #000;
+	line-height: 0.1em;
+	margin: 10px 0 20px;
+	letter-spacing: 0.2rem;
+}
+
+h2 span {
+	background: #eaeded;
+	padding: 0 10px;
+}
+
+/* Flexbox properties */
+#center {
+	margin: 0px;
+	background-color: #eaeded;
+	margin: auto;
+}
+
+.container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-content: center;
+	gap: 20px;
+	padding: 0;
+	margin: 0;
+}
+
+.col-3 {
+	letter-spacing: 0.1em;
+	width: 380px;
+	background-color: #acacac;
+	padding: 20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	box-shadow: 3px 2px 2px black;
+	transition-duration: 0.2s;
+}
+
+.col-3:hover {
+	transform: scale(1.05);
+}
+
+@media only screen and (min-width: 1200px) {
+	/* width > 1200px */
+	#center {
+		width: 1200px;
+	}
+	.col-r {
+		width: 800px;
+	}
+	.col-1 {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 1199px) {
+	/* width < 1200px */
+	#center {
+		width: 100vw;
+	}
+	.col-r {
+		width: 80%;
+	}
+	.col-1 {
+		width: 80%;
+	}
+}
+
+.project-title {
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.project-desc {
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}

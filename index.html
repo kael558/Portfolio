@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<link rel="stylesheet" href="styles.css" />
+		<script
+			type="text/javascript"
+			src="https://unpkg.com/showdown/dist/showdown.min.js"
+		></script>
+		<title>Rahel Gunaratne</title>
+	</head>
+	<body>
+		<!-- Navigation bar -->
+		<ul id="navbar">
+			<li><a href="#" id="home-button">Home</a></li>
+			<li><a href="#" id="projects-button">Projects</a></li>
+			<li><a href="#" id="blog-button">Blog</a></li>
+			<li><a href="#" id="publications-button">Publications</a></li>
+		</ul>
+
+		<!-- SPA pages -->
+		<div id="center">
+			<div id="home-page" class="container">
+				<img
+					src="images/profile_pic.png"
+					width="360px"
+					height="480px"
+					style="
+						position: relative;
+						bottom: -9px;
+						vertical-align: middle;
+						padding: 0px;
+						margin: 25px 20px 0px 0px;
+					"
+				/>
+
+				<div class="col-r">
+					<h1>Rahel Gunaratne</h1>
+					<h3>Data Scientist & Software Engineer</h3>
+					<div position="absolute">
+						<img src="images/github-mark.png" class="icon" />
+						<img src="images/linkedin-icon.png" class="icon" />
+						<img src="images/gmail.png" class="icon" />
+					</div>
+
+					<h2><span>ABOUT ME</span></h2>
+					<p>
+						Hey! I'm Rahel, a recent grad in Software Engineering with minors in
+						Computer Science & Physics and experience in data science.
+					</p>
+
+					<p>
+						I'm a quick learner and I like to work on a variety of projects. I
+						love learning and working with great people to leverage data,
+						machine learning and software to solve meaningful problems.
+					</p>
+					<p>
+						I have experience with MLOps in integrating pipelines with major
+						cloud services (AWS and GCP), machine learning models, web
+						applications and working with APIs. I'm most interested in NLP and
+						Computer Vision and I keep up to date with the latest and greatest
+						with forums such as HuggingFace and FastAI.
+					</p>
+
+					<p>
+						In my free time, you can find me working on random projects,
+						climbing or binging murder mysteries.
+					</p>
+				</div>
+
+				<div class="col-1" style="margin-top: 40px">
+					<h2><span>PROJECT HIGHLIGHTS</span></h2>
+					<div
+						id="projects-truncated"
+						class="container"
+						style="margin-top: 30px"
+					></div>
+					<button id="see-projects" style="margin-top: 20px">
+						See more...
+					</button>
+					<div class="col-1" style="margin-top: 20px">
+						<h2><span>BLOG</span></h2>
+						<p>In the works...</p>
+					</div>
+
+					<div class="col-1" style="margin-top: 40px">
+						<h2><span>PUBLICATIONS</span></h2>
+						<p>In the works...</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="projects-page" class="container">
+				<h3>Projects</h3>
+
+				<select>
+					<option value="Data Science">Data Science</option>
+					<option value="Software Engineering">Software Engineering</option>
+				</select>
+
+				<div id="projects-list"></div>
+			</div>
+
+			<div id="blog-page" class="container">
+				<h1>BLOG POSTS</h1>
+			</div>
+
+			<div id="publications-page" class="container">
+				<h1>PUBLICATIONS</h1>
+			</div>
+
+			<div id="project-page">
+				<!--
+					<h1 id="project-title"></h1>
+
+				<div id="people-div">
+					<h2><span>PEOPLE</span></h2>
+					<ul id="people"></ul>
+				</div>
+				<div id="glossary-div">
+					<h2><span>GLOSSARY</span></h2>
+					<ul id="glossary"></ul>
+				</div>
+
+				<div id="problem-statement-div">
+					<h2><span>PROBLEM STATEMENT</span></h2>
+					<div id="problem-statement"></div>
+				</div>
+
+				<div id="implementation-div">
+					<h2><span>IMPLEMENTATION</span></h2>
+					<div id="implementation"></div>
+				</div>
+
+				<div id="skills-div">
+					<h2><span>SKILLS</span></h2>
+					<p id="skills"></p>
+				</div>
+
+				<div id="links-div">
+					<h2><span>LINKS</span></h2>
+					<ul id="links"></ul>
+				</div>
+			-->
+			</div>
+		</div>
+
+		<!-- Load script -->
+		<script src="index.js"></script>
+	</body>
+</html>
+
+<!--
+img,
+title,
+short_desc,
+people,
+glossary,
+problem_statement,
+implementation,
+skills,
+links
+-->
