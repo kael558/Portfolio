@@ -1,6 +1,6 @@
-# Visualizing demographics data
+# Visualizing Diversity in Data
 
-## People
+## <span> People </span>
 
 Fateme Rajabiyazdi – Supervisor
 Gananatha Subrahmanyam – EDI Collaborator
@@ -35,7 +35,7 @@ JavaScript, HTML, CSS, D3, Requirements, Written Communication, Verbal Communica
 
 ## Links
 
-[Project page](https://kael558.github.io/EDIProjectPage/)
-[Github](https://github.com/kael558/symmetrical-dollop)
-[Visualization](https://kael558.github.io/symmetrical-dollop/)
-[Paper Download](drive link)
+- [Project page](https://kael558.github.io/EDIProjectPage/)
+- [Github](https://github.com/kael558/symmetrical-dollop)
+- [Visualization](https://kael558.github.io/symmetrical-dollop/)
+- [Paper Download](images/visualizing_diversity/EDI_Visualization_Design.pdf)
