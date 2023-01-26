@@ -117,7 +117,7 @@ class Project {
 	render_page() {
 		console.log("render page");
 		fetch(
-			"https://raw.githubusercontent.com/kael558/Portfolia/main/markdown/visualizing_diversity.md"
+			"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/visualizing_diversity.md"
 		)
 			.then((response) => response.text())
 			.then((text) => {
