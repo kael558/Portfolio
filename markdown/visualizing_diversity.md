@@ -2,10 +2,10 @@
 
 ## <span> People </span>
 
-Fateme Rajabiyazdi – Supervisor
-Gananatha Subrahmanyam – EDI Collaborator
+- [Fateme Rajabiyazdi](https://fatemerajabiyazdi.github.io//)
+- Gananatha Subrahmanyam
 
-## Problem Statement
+## <span> Problem Statement </span>
 
 Tracking diversity statistics can help universities to identify areas where they may need to improve in terms of recruiting, admitting, and retaining diverse students. Having proper tools to understand the data can assist Universities as they work to effect policy changes in relation to diversity, equity and inclusion.
 
@@ -15,7 +15,7 @@ The Carleton Original Data Cubes (CODC) contain information about the demographi
 
 The primary goal was to design an interactive visualization on a web-based platform. It allows graphical comparison of student diversity in various academic categories. The secondary goal was to show the lack of demographic diversity data collected by the University.
 
-## Implementation
+## <span> Implementation </span>
 
 ![Low Fidelity Vizualizations](images/visualizing_diversity/low_fidelity.png)
 In phase one, I created low to medium-fidelity visualizations and collaborated with an EDI research specialist to discuss missing attributes and improve designs. Finally, I cleaned the CODC data using Python.
@@ -29,13 +29,13 @@ We communicated with the Carleton Institutional Research & Planning Team about p
 
 We also wrote a paper detailing our project, for the Visualizing for Social Good workshop. Despite not being accepted, I gained valuable feedback for future paper submissions.
 
-## Skills
+## <span> Skills </span>
 
 JavaScript, HTML, CSS, D3, Requirements, Written Communication, Verbal Communication, Data wrangling, Tableau
 
-## Links
+## <span> Links </span>
 
 - [Project page](https://kael558.github.io/EDIProjectPage/)
-- [Github](https://github.com/kael558/symmetrical-dollop)
+- [Repository](https://github.com/kael558/symmetrical-dollop)
 - [Visualization](https://kael558.github.io/symmetrical-dollop/)
 - [Paper Download](images/visualizing_diversity/EDI_Visualization_Design.pdf)
