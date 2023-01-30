@@ -30,7 +30,7 @@ Our goal was to help researchers and students find relevant research using a sem
 
 We collected 500 abstracts of 5 subjects from [arXiv](https://arxiv.org/)'s API. The abstracts were converting to embeddings using [Cohere](https://cohere.ai/)'s embedding endpoint.
 
-![Implementation](images/rp_ss/semantic_search.png)
+![Implementation](images/rp_ss/semantic_search.PNG)
 
 We reduced the dimensions of the embeddings using UMAP and plotted them on a 2-D plot.
 
