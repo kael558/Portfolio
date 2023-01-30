@@ -1,12 +1,12 @@
 # Automating Annotations with a Zero-Shot Model
 
-## <span> Glossary </span>
+## <span> Background </span>
 
-- Zero-Shot model: A machine learning model that can classify new objects or concepts that it has never seen before, based on prior knowledge of other objects or concepts.
-- Label Studio: A data annotation tool for labeling and exploring data.
-- ZenML: A MLOps tool to automate the process of building, testing, and deploying models.
-- Stack: a stack refers to the set of tools and technologies used for building, deploying, and managing machine learning models.
-- Pipeline: a pipeline refers to a set of steps or stages that are executed in a defined order to build, test, and deploy machine learning models.
+Zero-shot models are machine learning models that can classify new objects or concepts that it has never seen before, based on prior knowledge of other objects or concepts.
+
+[Label Studio](https://labelstud.io/) is a popular data annotation tool for labeling and exploring data.
+
+[ZenML](https://zenml.io/) is a MLOps tool to automate the process of building, testing, and deploying models. It separates the technical stack and the pipelines to reduce the complexity of managing the dependencies between them. The stack refers to the integrations of various technologies to support the ML lifecycle. The pipeline refers to a set of steps or stages that are executed in a defined order to build, test, and deploy machine learning models.
 
 ## <span> Problem Statement </span>
 
@@ -33,10 +33,6 @@ The pipeline is created to handle the dataset, to load the images, predict the a
 ![Implementation](images/anno_zenml/interface.jpg)
 
 These are the predicted annotations in Label Studio after running the pipeline with a caption of “fruit baskets” and labels of “pineapple, banana and apple”. Label Studio allows verification of the labels and addition of new labels.
-
-## <span> Skills </span>
-
-Bing Image Search API, ZenML, Zero Shot Model (GLIPv2), Label Studio, AWS S3, Google Colab
 
 ## <span> Links </span>
 

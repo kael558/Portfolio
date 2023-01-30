@@ -1,12 +1,100 @@
-let skills_list = {
-	//1st
-	Data: ["Collection", "Wrangling", "Exploratory Analysis", "Training"],
-	"Software Engineering": ["Backend", "Frontend"],
+const skill_to_tech_map = {
+	"Hypothesis Testing": ["pingouin", "statsmodel", "scipy"],
+	Deployment: ["Streamlit", "Hugging Face Spaces", "Gradio", "FastAPI"],
 
-	Backend: ["Database"],
-	Frontend: ["React Native", "D3", "Streamlit"],
+	"Mobile App Development": [
+		"Expo Go",
+		"React Native",
+		"MongoDB",
+		"TypeScript",
+		"Android Studio",
+	],
+	Prototyping: ["Figma"],
 
-	//2nd
+	Agile: ["Jira", "Git"],
+	API: ["requests", "CRUDRepository"],
+	"Web Scraping": ["requests"],
+	"Web Crawling": ["Scrapy"],
+	"Template Engine": ["Thymeleaf", "Pug"],
+	"Data Wrangling": [
+		"Pandas",
+		"NumPy",
+		"Google DataPrep",
+		"DataWrangler",
+		"OpenRefine",
+		"Excel",
+		"GDAL",
+	],
+	"Exploratory Analysis": [
+		"Jupyter Notebooks",
+		"Pandas",
+		"NumPy",
+		"Seaborn",
+		"Python",
+		"Tableau",
+	],
+	Visualization: ["D3", "Matplotlib", "Seaborn", "Tableau"],
+	"Web Frameworks": ["Spring Boot", "Django", "Flask"],
+	"Full Stack Languages": ["JavaScript", "HTML", "CSS", "Python"],
+	"Backend Languages": ["Python", "Java"],
+	"Frontend Languages": ["TypeScript", "JavaScript", "HTML", "CSS"],
+	"Version Control": ["Git"],
+	"JS Frameworks": ["NodeJS", "ReactJS", "ExpressJS"],
+	"Responsive Design": ["Bootstrap", "jQuery"],
+	"Web Hosting": ["Github Pages", "Heroku", "Cloud"],
+	"Multi-threading": ["Akka"],
+	"Algorithms & Data Structures": [],
+	"DL Frameworks": [
+		"PyTorch",
+		"TensorFlow",
+		"Keras",
+		"Fastai",
+		"IceVision",
+		"Deeplearning4j",
+	],
+
+	"DL experiment tracking": ["Weights & Biases", "Vertex AI"],
+	MLOps: ["ZenML"],
+
+	"CI/CD": ["TravisCI", "CircleCI", "Jenkins"],
+	Containers: ["Docker"],
+	"Monitoring Tools": ["Hystrix"],
+
+	noSQL: ["MongoDB", "Firebase"],
+	SQL: ["PostgreSQL", "MySQL", "SQLite", "BigQuery"],
+
+	Cloud: ["AWS", "GCP", "Azure"],
+
+	AWS: ["Cloudwatch", "S3", "Lambda", "SageMaker"],
+	GCP: ["BigQuery", "Vertex AI", "Container", "Google Places API"],
+
+	CNN: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+	RNN: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+	LSTM: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+	GAN: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+	AE: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+	Transformer: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+	DBN: ["Deeplearning4j", "PyTorch", "TensorFlow"],
+
+	Bagging: ["Scikit-learn"],
+	"Linear Regression": ["Scikit-learn", "statsmodels"],
+	"Logistic Regression": ["Scikit-learn"],
+	SVM: ["Scikit-learn"],
+	"Naive Bayes": ["Scikit-learn"],
+	"Decision Tree": ["Scikit-learn"],
+	KNN: ["Scikit-learn"],
+	"Random Forest": ["Scikit-learn"],
+	PCA: ["Scikit-learn"],
+	TruncatedSVD: ["Scikit-learn"],
+	UMAP: ["umap"],
+	NMF: ["Scikit-learn"],
+	"t-SNE": ["Scikit-learn"],
+	"Hierarchical Clustering": ["Scikit-learn"],
+	"K-Means": ["Scikit-learn"],
+	AdaBoost: ["Scikit-learn"],
+	"Gradient Boost": ["Scikit-learn"],
+	"Stochastic Gradient Boosting": ["Scikit-learn"],
+
 	Languages: [
 		"Python",
 		"C",
@@ -18,70 +106,204 @@ let skills_list = {
 		"C#",
 		"MATLAB",
 		"SQL",
+		"VBA",
 	],
-	"DL frameworks": [
-		"PyTorch",
-		"Tensorflow",
-		"Keras",
-		"Fastai",
-		"IceVision",
-		"Deeplearning4j",
-		"Cohere",
-		"ZenML",
-	],
-	"DS libraries": [
-		"sklearn",
-		"scikit‑learn",
-		"scipy",
-		"statsmodels",
-		"pingouin",
-		"seaborn",
-		"matplotlib",
-		"pandas",
-		"numpy",
-		"Annoy",
-	],
-	"DL experiment tracking": ["Weights & Biases", "Vertex AI"],
-	"DL deployment": ["Streamlit", "Hugging Face Spaces", "Gradio"],
-	Database: [
-		"Firebase",
-		"MongoDB",
-		"PostgreSQL",
-		"MySQL",
-		"SQLite",
-		"BigQuery",
-	],
-	"Continuous Integration": ["TravisCI"],
 
-	MLOps: ["ZenML"],
-	Cloud: ["GCP", "AWS"],
-	AWS: ["Cloudwatch", "S3", "Lambda", "SageMaker"],
-	"ML Algorithms": [
-		"Clustering",
-		"Linear Regression",
-		"Logistic Regression",
-		"Decision Tree",
-		"SVM",
-		"Naive Bayes",
-		"KNN",
-		"Random Forest",
-		"Dimensionality Reduction",
-		"Boosting",
+	Video: ["FFmpeg"],
+
+	OCR: ["Tesseract"],
+	"Image Classification": ["PyTorch"],
+	"Object Detection": ["GLIPv2"],
+	"Zero-shot Model": ["GLIPv2"],
+	Segmentation: ["PyTorch"],
+
+	"Vector Database": ["Annoy", "Pinecone", "FAISS"],
+	"TF-IDF": ["nltk"],
+	Embeddings: ["Cohere", "OpenAI", "AI21"],
+	Classification: ["Cohere", "OpenAI", "AI21"],
+	Generation: ["Cohere", "OpenAI", "AI21"],
+	"Stable Diffusion": ["Runway", "Stable Diffusion"],
+	Annotation: ["Label Studio"],
+	Testing: ["Selenium", "junit"],
+
+	"Value-Based": ["SARSA", "Q-Learning", "Actor-Critic"],
+	"Policy-Based": ["Policy Gradient", "Actor-Critic"],
+
+	SARSA: ["OpenAI Gym", "TensorFlow", "RLTK", "PyTorch", "RLlib"],
+	"Q-Learning": ["OpenAI Gym", "TensorFlow", "RLTK", "PyTorch", "RLlib"],
+	"Policy Gradient": ["OpenAI Gym", "TensorFlow", "RLTK", "PyTorch", "RLlib"],
+	"Actor-Critic": ["OpenAI Gym", "TensorFlow", "RLTK", "PyTorch", "RLlib"],
+	Evolutionary: ["DEAP", "PyGMO", "EvoRoPy", "NEAT-Python", "RLlib"],
+	"Model-Based": ["OpenAI Gym", "TensorFlow", "RLLab", "RLlib"],
+
+	"Monte Carlo Policy Evaluation": [
+		"OpenAI Gym",
+		"TensorFlow",
+		"RLLab",
+		"RLlib",
+	],
+	"Monte Carlo Control": ["OpenAI Gym", "TensorFlow", "RLLab", "RLlib"],
+	"Temporal-Difference Monte Carlo": [
+		"OpenAI Gym",
+		"TensorFlow",
+		"RLLab",
+		"RLlib",
+	],
+	"Monte Carlo Tree Search": ["OpenAI Gym", "TensorFlow", "RLLab", "RLlib"],
+};
+
+const skills = {
+	//0th
+	None: ["Data Science", "Software Engineering", "Languages"],
+
+	//1st
+	"Data Science": [
+		"NLP",
+		"Computer Vision",
+		"Data Collection",
+		"Data Wrangling",
+		"Exploratory Analysis",
+		"Deep Learning",
+		"Machine Learning",
+		"Hypothesis Testing",
+		"Deployment",
+	],
+	"Software Engineering": [
+		"Backend",
+		"Frontend",
+		"Full Stack",
+		"DevOps",
+		"Agile",
+		"Mobile App Development",
+		"Prototyping",
+		"Testing",
+	], //https://www.browserstack.com/guide/what-are-the-different-types-of-software-engineer-roles
+
+	//2nd
+	Skills: ["Multi-threading", "Algorithms & Data Structures"],
+	NLP: ["LLM", "TF-IDF", "Vector Database", "Semantic Search"],
+	"Computer Vision": [
+		"Zero-shot Model",
+		"Annotation",
+		"OCR",
+		"Image Classification",
+		"Object Detection",
+		"Segmentation",
+		"Video",
+		"Stable Diffusion",
+	],
+	"Data Collection": ["API", "Web Crawling", "Web Scraping"],
+
+	"Machine Learning": [
+		"MLOps",
+		"ML Algorithms",
+		"Deep Learning",
+		"Reinforcement Learning",
+		"Monte Carlo",
+	], //Scikit-learn
+
+	"Full Stack": [
+		"Web Frameworks",
+		"JS Frameworks",
+		"Databases",
+		"Full Stack Languages",
+		"Version Control",
+		"Web Hosting",
+	],
+	Backend: ["Databases", "Version Control", "Backend Languages", "Cloud"],
+	Frontend: [
+		"Responsive Design",
+		"JS Frameworks",
+		"Version Control",
+		"Frontend Languages",
+		"Template Engine",
+	],
+	DevOps: [
+		"Version Control",
+		"CI/CD",
+		"Containers",
+		"Monitoring Tools",
+		"Cloud",
 	],
 
 	//3rd
-	"Dimensionality Reduction": ["PCA", "TruncatedSVD"],
-	Boosting: ["AdaBoost", "Gradient Boost"],
+	"Monte Carlo": [
+		"Monte Carlo Policy Evaluation",
+		"Monte Carlo Control",
+		"Temporal-Difference Monte Carlo",
+		"Monte Carlo Tree Search",
+	],
+
+	"Reinforcement Learning": [
+		"Value-Based",
+		"Policy-Based",
+		"Model-Based",
+		"Evolutionary",
+	],
+
+	"Deep Learning": ["DL Frameworks", "DL experiment tracking", "DL Models"],
+	"Semantic Search": ["Embeddings", "Vector Database"],
+	LLM: ["Embeddings", "Classification", "Generation"],
+	Databases: ["noSQL", "SQL"],
+
+	"ML Algorithms": [
+		"Linear Regression",
+		"Logistic Regression",
+		"Ensemble Learning",
+		"Clustering",
+		"SVM",
+		"Naive Bayes",
+		"Decision Tree",
+		"KNN",
+		"Dimensionality Reduction",
+	],
+
+	//4th
+	"Value-Based": ["SARSA", "Q-Learning", "Actor-Critic"],
+	"Policy-Based": ["Policy Gradient", "Actor-Critic"],
+
+	"DL Models": ["CNN", "RNN", "LSTM", "GAN", "AE", "Transformer", "DBN"],
+	"Ensemble Learning": ["Random Forest", "Boosting", "Bagging"],
+	"Dimensionality Reduction": ["PCA", "TruncatedSVD", "UMAP", "t-SNE", "NMF"],
 	Clustering: ["Hierarchical Clustering", "K-Means"],
+
+	//5th
+	Boosting: ["AdaBoost", "Gradient Boost", "Stochastic Gradient Boosting"],
 };
 
 var converter = new showdown.Converter();
 
+const full_tech_set = new Set();
+
+for (let tech_list of Object.values(skill_to_tech_map)) {
+	for (let tech of tech_list) {
+		full_tech_set.add(tech);
+	}
+}
+
+const full_skill_set = new Set();
+for (let skill of Object.keys(skill_to_tech_map)) full_skill_set.add(skill);
+
+for (let skill of Object.keys(skills)) full_skill_set.add(skill);
+
 class Project {
-	constructor(title, short_desc, skills, img, md_file) {
+	constructor(title, short_desc, skills, tech, img, md_file) {
 		this.title = title;
 		this.short_desc = short_desc;
-		this.skills = skills;
+
+		for (let skill of skills) {
+			if (!full_skill_set.has(skill)) {
+				console.log("Error: skill does not exist: " + skill);
+			}
+		}
+
+		for (let t of tech) {
+			if (!full_tech_set.has(t)) {
+				console.log("Error: " + title + " tech does not exist: " + t);
+			}
+		}
+		this.skills = new Set(skills);
+		this.tech = new Set(tech);
 		this.img = img;
 		this.md_file = md_file;
 	}
@@ -107,13 +329,29 @@ class Project {
 	}
 }
 
-let projects = [];
+const projects = [];
 
 projects.push(
 	new Project(
 		"Visualizing Diversity in Data",
 		"Utilized D3 and JavaScript to create advanced visualizations of complex data, showcasing the intricacies of diversity while meeting project requirements and deadlines.",
-		[],
+		[
+			"Visualization",
+			"Frontend Languages",
+			"Version Control",
+			"Web Hosting",
+			"Data Wrangling",
+		],
+		[
+			"JavaScript",
+			"HTML",
+			"CSS",
+			"Python",
+			"Github Pages",
+			"D3",
+			"Git",
+			"Tableau",
+		],
 		"images/visualizing_diversity/edi.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/visualizing_diversity.md"
 	)
@@ -123,13 +361,8 @@ projects.push(
 	new Project(
 		"Research Paper Semantic Search and Clustering",
 		"Developed a tool for semantic search and clustering of research papers that is adaptable to various data sets and can handle large volumes, resulting in significant time savings for research",
-		[
-			"Python",
-			"Cohere's Transformers",
-			"Hierarchical Clustering",
-			"Streamlit",
-			"Annoy",
-		],
+		["Hierarchical Clustering", "LLM", "NLP", "Vector Database", "Embeddings"],
+		["Python", "Cohere", "Streamlit", "Annoy", "nltk", "Git"],
 		"images/rp_ss/semantic_search.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/semantic_searcher.md"
 	)
@@ -139,20 +372,186 @@ projects.push(
 	new Project(
 		"Stable Diffusion Creator Tool",
 		"Created an interface that integrated Stable Diffusion models, allowing users to efficiently create videos with interpolation from specific images and prompts ",
+		["API", "Stable Diffusion", "Web Hosting", "Visualization", "Frontend"],
 		[
 			"Python",
-			"Stable Diffusion",
-			"API",
 			"Hugging Face Spaces",
 			"Gradio",
 			"Flask",
 			"HTML",
 			"JavaScript",
-			"d3",
-			"ffmpeg",
+			"D3",
+			"FFmpeg",
+			"Github Pages",
+			"Git",
 		],
 		"images/sd_tool/stablediffusion.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/sd_creator_tool.md"
+	)
+);
+
+projects.push(
+	new Project(
+		"Automated Annotations with Zero-Shot",
+		"Developed a tool to accelerate the data annotation process. Users may download images given a caption, predict annotations based on user input labels and verify them",
+		["MLOps", "Zero-shot Model", "Object Detection", "Cloud", "API"],
+		["Python", "ZenML", "GLIPv2", "AWS", "Git"],
+		"images/anno_zenml/interface.jpg",
+		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/automating_anno.md"
+	)
+);
+
+projects.push(
+	new Project(
+		"Web Indexer",
+		"Developed a question answering tool that can be seamlessly integrated into any website. It provides a convenient way to search for information in a website and returns answers in a clear and comprehensible format, along with relevant sources.",
+		["Web Crawling", "LLM", "Vector Database", "Generation", "Embeddings"],
+		["Python", "Scrapy", "AI21", "Streamlit", "Annoy", "Git"],
+		"images/web_indexer/image.png",
+		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/automating_anno.md"
+	)
+);
+
+projects.push(
+	new Project(
+		"Automated Data Wrangling Pipeline",
+		"Independently developed a data wrangling pipeline using VBA to eliminate error prone manual process",
+		["Data Wrangling"],
+		["VBA", "Excel"],
+		"images/excel_vba/card.jpg",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"Wilderness Survival App",
+		"Created a mobile app that allows injured patients to track their vitals, addressing the challenge of collecting accurate and consistent medical data in high‑pressure scenarios",
+		[
+			"Frontend Languages",
+			"noSQL",
+			"JS Frameworks",
+			"Version Control",
+			"Agile",
+			"Mobile App Development",
+			"Prototyping",
+		],
+		[
+			"Figma",
+			"TypeScript",
+			"React Native",
+			"Expo Go",
+			"MongoDB",
+			"Jira",
+			"Git",
+		],
+		"images/wilderness_survival_app/card.png",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"Shopify Marketplace Mirror",
+		"Developed an e-commerce website that addresses the needs of individuals looking to sell their own products",
+		[
+			"Frontend Languages",
+			"Web Frameworks",
+			"SQL",
+			"CI/CD",
+			"Monitoring Tools",
+			"Agile",
+			"Version Control",
+			"Template Engine",
+			"Web Hosting",
+			"Testing",
+		],
+		[
+			"Java",
+			"Spring Boot",
+			"SQLite",
+			"TravisCI",
+			"Heroku",
+			"Git",
+			"Hystrix",
+			"Thymeleaf",
+			"junit",
+		],
+		"images/shopify/card.png",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"Parkour Map",
+		"Created a mobile social app, similar to Snapchat, catering to parkour enthusiasts",
+		[
+			"noSQL",
+			"JS Frameworks",
+			"Version Control",
+			"Mobile App Development",
+			"GCP",
+			"Data Wrangling",
+		],
+		["Java", "Android Studio", "GDAL", "Firebase", "Google Places API"],
+		"images/parkour_map/card.jpg",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"MineSweeper Agent",
+		"Developed a deep learning model that utilizes q‑learning reinforcement learning and Monte Carlo simulation to determine the optimal actions in MineSweeper",
+		[
+			"Multi-threading",
+			"Deep Learning",
+			"Algorithms & Data Structures",
+			"Version Control",
+			"CNN",
+		],
+		["Java", "Akka", "Deeplearning4j", "Selenium"],
+		"images/minesweeper/card.png",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"Data Collection",
+		"Automated data scraping using AWS Lambda, S3 and CloudWatch events to improve accuracy and consistency of data",
+		["Data Collection", "Web Scraping", "Cloud", "Version Control"],
+		["Python", "AWS", "requests"],
+		"images/data_collection/card.jpg",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"Optical Character Recognizer",
+		"Created a tool to help users easily extract text from images using OCR",
+		["OCR", "Computer Vision", "Version Control"],
+		["Java", "Tesseract"],
+		"images/ocr/card.jpeg",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"TicTacToe Agent",
+		"Implemented a SARSA agent using iterative policy evaluation reinforcement learning and Monte Carlo simulation to choose optimal actions in TicTacToe",
+		[
+			"Monte Carlo Policy Evaluation",
+			"Monte Carlo",
+			"Reinforcement Learning",
+			"Algorithms & Data Structures",
+		],
+		["Java"],
+		"images/tictactoe/card.png",
+		null
 	)
 );
 
@@ -160,7 +559,7 @@ function render_project_highlights() {
 	let project_divs = d3
 		.select("#projects-truncated")
 		.selectAll("div")
-		.data(projects)
+		.data(projects.slice(0, 3))
 		.enter()
 		.append("div")
 		.classed("col-3", true)
@@ -187,7 +586,6 @@ function render_project_highlights() {
 		.classed("project-desc", true)
 		.text((d) => d.short_desc);
 }
-render_project_highlights();
 
 let home_button = document.getElementById("home-button");
 let projects_button = document.getElementById("projects-button");
@@ -208,39 +606,234 @@ see_projects_link.onclick = () => navigate("projects");
 blog_button.onclick = () => navigate("blog");
 publications_button.onclick = () => navigate("publications");
 
-function render_projects() {
-	let project_divs = d3
-		.select("#projects-truncated")
-		.selectAll("div")
-		.data(projects)
-		.enter()
-		.append("div")
-		.classed("col-3", true)
-		.on("click", function (e, d) {
-			navigate("project", d);
+let parent_skills = [];
+
+let selected_skill = "None";
+let selected_tech = new Set(["All"]);
+
+function intersect(a, b) {
+	return new Set([...a].filter((x) => b.has(x)));
+}
+
+function get_filtered_projects(selected_skill, selected_tech) {
+	let tech = get_tech_from_skill(selected_skill);
+
+	if (!selected_tech.has("All")) {
+		tech = intersect(selected_tech, tech);
+	}
+
+	let filtered_projects = projects.filter(
+		(p) => intersect(p.tech, tech).size > 0
+	);
+	return filtered_projects;
+}
+
+document.getElementById("back").onclick = () => {
+	selected_skill = parent_skills.pop();
+	render_projects_page();
+};
+
+function render_projects_page() {
+	console.log("render page");
+	render_navigation();
+
+	let filtered_projects = get_filtered_projects(selected_skill, selected_tech);
+
+	render_projects(filtered_projects);
+}
+
+function get_all_child_skills_from_skill(selected_skill) {
+	let current_skills =
+		selected_skill in skills ? [...skills[selected_skill]] : [selected_skill];
+	let skill_set = new Set();
+
+	while (current_skills.length > 0) {
+		let skill = current_skills.shift();
+		if (skill in skills) {
+			current_skills = current_skills.concat(skills[skill]);
+		} else {
+			skill_set.add(skill);
+		}
+	}
+
+	return skill_set;
+}
+
+function get_tech_by_category(selected_skill) {
+	const tech_by_category = new Object();
+	let current_skills =
+		selected_skill in skills ? [...skills[selected_skill]] : [selected_skill];
+	for (let skill of current_skills) {
+		tech_by_category[skill] = get_tech_from_skill(skill);
+	}
+	return tech_by_category;
+}
+
+function get_tech_from_skill(selected_skill) {
+	let current_skills =
+		selected_skill in skills ? [...skills[selected_skill]] : [selected_skill];
+	let tech_set = new Set();
+
+	while (current_skills.length > 0) {
+		let skill = current_skills.shift();
+		if (skill in skills) {
+			current_skills = current_skills.concat(skills[skill]);
+		} else {
+			console.log(skill);
+			for (let tech of skill_to_tech_map[skill]) {
+				tech_set.add(tech);
+			}
+		}
+	}
+
+	return tech_set;
+}
+
+function render_navigation() {
+	document.getElementById("back").style.display =
+		parent_skills.length == 0 ? "none" : "block";
+
+	document.getElementById("navigation-table").innerHTML = "";
+
+	document.getElementById("current-skill").innerText = selected_skill;
+
+	let skill_cell_header = document.createElement("th");
+	skill_cell_header.innerText = "Skills";
+
+	let tech_cell_header = document.createElement("th");
+	tech_cell_header.innerText = "Related Tech";
+
+	let row_header = document.createElement("tr");
+	row_header.appendChild(skill_cell_header);
+	row_header.appendChild(tech_cell_header);
+
+	let table = document.getElementById("navigation-table");
+	table.appendChild(row_header);
+
+	let tech_by_category = get_tech_by_category(selected_skill);
+	let current_skills =
+		selected_skill in skills ? skills[selected_skill] : [selected_skill];
+	for (let skill of current_skills) {
+		const skill_cell = document.createElement("td");
+		const skill_cell_button = document.createElement("button");
+		skill_cell_button.innerText = skill;
+		skill_cell_button.onclick = () => {
+			if (!(skill in skills)) {
+				//selected_skill = skill;
+				return false;
+			} else {
+				parent_skills.push(selected_skill);
+				selected_skill = skill;
+			}
+			selected_tech = new Set(["All"]);
+
+			render_projects_page();
 			return false;
-		});
+		};
+		skill_cell.appendChild(skill_cell_button);
 
-	project_divs
-		.append("p")
-		.classed("project-title", true)
-		.text((d) => d.title);
+		const tech_cell = document.createElement("td");
 
-	project_divs
-		.append("img")
-		.attr("src", (d) => d.img)
-		.style("width", "100%")
-		.style("height", "170px")
-		.style("border", "0px")
-		.style("border-radius", "5px");
+		for (let tech of tech_by_category[skill]) {
+			const button = document.createElement("button");
+			button.innerText = tech;
+			if (selected_tech.has(tech)) {
+				button.classList.add("active");
+			}
 
-	project_divs
-		.append("p")
-		.classed("project-desc", true)
-		.text((d) => d.short_desc);
+			button.onclick = () => {
+				if (selected_tech.has("All")) {
+					selected_tech.delete("All");
+					selected_tech.add(tech);
+				} else if (selected_tech.has(tech)) {
+					selected_tech.delete(tech);
+					if (selected_tech.size == 0) {
+						selected_tech.add("All");
+					}
+				} else {
+					selected_tech.add(tech);
+				}
+				render_projects_page();
+			};
+			tech_cell.appendChild(button);
+		}
+
+		const row = document.createElement("tr");
+		row.appendChild(skill_cell);
+		row.appendChild(tech_cell);
+
+		table.appendChild(row);
+	}
+}
+
+function render_projects(projects) {
+	const t = d3.transition().duration(750);
+
+	let project_groups = d3
+		.select("#projects-list")
+		.selectAll("div.row")
+		.data(projects, (d) => d.title)
+		.join(
+			(enter) => {
+				let project_group = enter
+					.append("div")
+					.classed("row", true)
+					.on("click", function (e, d) {
+						navigate("project", d);
+						return false;
+					});
+
+				project_group
+					.style("transform", "scale(1 0)")
+					.transition()
+					.duration(750)
+					.style("transform", "scale(1 1)");
+
+				project_group
+					.append("div")
+					.style("width", "15%")
+					.style("float", "left")
+					.classed("project-img", true)
+					.append("img")
+					.attr("src", (d) => d.img)
+					.attr("width", "100%")
+					.style("max-height", "100px");
+
+				let project_text_divs = project_group
+					.append("div")
+					.style("width", "83%")
+					.style("float", "left")
+					.style("padding-left", "2%");
+
+				project_text_divs
+					.append("h4")
+					.text((d) => d.title)
+					.style("margin", "0px");
+
+				project_text_divs
+					.append("p")
+					.text((d) => d.short_desc)
+					.style("margin", "0px");
+
+				return project_group;
+			},
+
+			(update) => {
+				return update;
+			},
+			(exit) =>
+				exit
+					.transition()
+					.duration(750)
+					.style("transform", "scale(1, 0)")
+					.style("opacity", 0)
+					.remove()
+		);
 }
 
 function navigate(page, project) {
+	if (project && project.md_file == null) return;
+
 	home_button.classList.remove("active");
 	projects_button.classList.remove("active");
 	blog_button.classList.remove("active");
@@ -254,7 +847,6 @@ function navigate(page, project) {
 		project_page.style.display = "none";
 		home_button.classList.add("active");
 	} else if (page == "projects") {
-		console.log("show projects");
 		home_page.style.display = "none";
 		projects_page.style.display = "block";
 		blog_page.style.display = "none";
@@ -287,4 +879,6 @@ function navigate(page, project) {
 	return false;
 }
 
-navigate("home");
+render_project_highlights();
+render_projects_page();
+navigate("projects");

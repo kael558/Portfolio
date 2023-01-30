@@ -1,85 +1,28 @@
 Todo:
 
-middle part will be changed on page switch
-finish projects truncated
+- add colors to table buttons
+- put ? with explanation of how to use
+- leaf skill on click (line 722)
+- add md files
 
-- put short desc for project
-- image with title and short desc under it
-- see more link
+# Projects to put:
 
-incorporate d3 for project-list with filters
+- Excel VBA
+- Wilderness Survival App
+- Shopify Marketplace Mirror
+- Android mobile app
+- MineSweeper Agent
+- Automating Data Collection
 
-# Contents
+- Optical Character Recognizer
+- TicTacToe Agent
+- Day Trading Strategy Tester
 
-- Education
-- Work experience
-- Projects
-- Skills
+# Skills
 
-Current projects (search through my contributions on github)
+Java, Spring Boot, SQLite, TravisCI, Heroku, Git Versioning, Hystrix, thymeleaf
 
-Hey! I’m Perry, a data scientist and engineer with 6+ years experience leading data science initiatives in early stage tech companies. I love working with great people to leverage data, machine learning and software to solve meaningful problems. I have experience building data pipelines, machine learning models, web applications, and working with APIs, working mostly in Python. In my free time you can find me in the backcountry hiking, climbing or exploring startup ideas with friends.
-
-My tech stack includes: Python, Machine Learning Libraries (NumPy, Scikit-learn, Pandas, Turi Create, TensorFlow, Keras, PyTorch, fastai, Transformers), Web Application Frameworks (Flask, FastAPI), AWS (EC2, RDS, S3, Batch, Lambda, SageMaker), Google Cloud Platform, Heroku, Bash, Git, MongoDB, PostgreSQL, APIs, Geographic Information Systems and some basic JavaScript, HTML, CSS stuff
-
-Put technologies as a bar chart with years of experience
-Categorize each technology
-
-Socials - linkedin, twitter, email, github, blog
-
-Research Paper Searching/Clustering
-Python, Cohere's Transformers, Hierarchical Clustering, Streamlit, Annoy
-
-Stable Diffusion Creator Tool
-Python, Stable Diffusion, API, Hugging Face Spaces, Gradio, Flask, HTML, JavaScript, d3, ffmpeg
-
-Data Collection from API
-Python, AWS
-
-Wilderness Survival App
-Figma, TypeScript, React Native, ExpoGo, MongoDB, Jira, Github, Unit Testing
-
-Shopify Marketplace Mirror
-Java, Spring Boot, SQLite, TravisCI, Heroku, Git Versioning, Hystrix
-
-MineSweeper Agent
-Java, Akka multithreading, Deeplearning4j, Selenium, algorithms \& data structures
-
-Day Trading Strategy Tester
-Java, MQL5, MetaTrader
-
-\vspace{-5mm}
-\begin{cvitems} % Description(s) of project
-\item {Developed a backtesting and paper-trading tool for stocks data from an API, providing traders with a time-saving solution for analyzing stocks.}
-\item{}
-
-      \end{cvitems}
-    }
-
-%---------------------------------------------------------
-\cventry
-{} % Organisation
-{Data Collection from API} % Project
-{} % Location
-{} % Date(s)
-{
-\vspace{-5mm}
-\begin{cvitems} % Description(s) of project
-\item {Automated data collection using AWS Lambda, S3, and CloudWatch events to improve the accuracy and consistency of data.}
-\end{cvitems}
-}
-%---------------------------------------------------------
-\cventry
-{} % Organisation
-{Day Trading Strategy Tester} % Project
-{} % Location
-{} % Date(s)
-{
-\vspace{-5mm}
-\begin{cvitems} % Description(s) of project
-\item {Developed a backtesting and paper-trading tool for stocks data from an API, providing traders with a time-saving solution for analyzing stocks.}
-\end{cvitems}
-}
+Android Studio, GDAL, Firebase, Google Places API
 
 A Software Engineer who learns quickly, approaches new challenges with a positive mindset, and effectively communicates to drive results.
 

@@ -8,6 +8,7 @@
 			type="text/javascript"
 			src="https://unpkg.com/showdown/dist/showdown.min.js"
 		></script>
+
 		<title>Rahel Gunaratne</title>
 	</head>
 	<body>
@@ -39,9 +40,37 @@
 					<h1>Rahel Gunaratne</h1>
 					<h3>Data Scientist & Software Engineer</h3>
 					<div position="absolute">
-						<img src="images/github-mark.png" class="icon" />
-						<img src="images/linkedin-icon.png" class="icon" />
-						<img src="images/gmail.png" class="icon" />
+						<a
+							href="https://github.com/kael558"
+							style="text-decoration: none"
+							target="_blank"
+						>
+							<img src="images/github-mark.png" class="icon" />
+						</a>
+
+						<a
+							href="https://www.linkedin.com/in/rahelgunaratne/"
+							style="text-decoration: none"
+							target="_blank"
+						>
+							<img src="images/linkedin-icon.png" class="icon" />
+						</a>
+
+						<a
+							href="mailto: rahel.gunaratne@gmail.com"
+							style="text-decoration: none"
+							target="_blank"
+						>
+							<img src="images/gmail.png" class="icon"
+						/></a>
+
+						<a
+							href="https://twitter.com/gunaratne_rahel"
+							style="text-decoration: none"
+							target="_blank"
+						>
+							<img src="images/twitter.png" class="icon" />
+						</a>
 					</div>
 
 					<h2><span>ABOUT ME</span></h2>
@@ -91,13 +120,17 @@
 				</div>
 			</div>
 
-			<div id="projects-page" class="container">
-				<h3>Projects</h3>
+			<div id="projects-page">
+				<h1>PROJECTS</h1>
 
-				<select>
-					<option value="Data Science">Data Science</option>
-					<option value="Software Engineering">Software Engineering</option>
-				</select>
+				<div><button id="back">Back</button></div>
+
+				<label for="current-skill" style="display: inline"
+					>Current Category:
+				</label>
+				<p id="current-skill" name="current-skill" style="display: inline"></p>
+
+				<table id="navigation-table"></table>
 
 				<div id="projects-list"></div>
 			</div>
@@ -110,43 +143,11 @@
 				<h1>PUBLICATIONS</h1>
 			</div>
 
-			<div id="project-page">
-				<!--
-					<h1 id="project-title"></h1>
-
-				<div id="people-div">
-					<h2><span>PEOPLE</span></h2>
-					<ul id="people"></ul>
-				</div>
-				<div id="glossary-div">
-					<h2><span>GLOSSARY</span></h2>
-					<ul id="glossary"></ul>
-				</div>
-
-				<div id="problem-statement-div">
-					<h2><span>PROBLEM STATEMENT</span></h2>
-					<div id="problem-statement"></div>
-				</div>
-
-				<div id="implementation-div">
-					<h2><span>IMPLEMENTATION</span></h2>
-					<div id="implementation"></div>
-				</div>
-
-				<div id="skills-div">
-					<h2><span>SKILLS</span></h2>
-					<p id="skills"></p>
-				</div>
-
-				<div id="links-div">
-					<h2><span>LINKS</span></h2>
-					<ul id="links"></ul>
-				</div>
-			-->
-			</div>
+			<div id="project-page"></div>
 		</div>
 
 		<!-- Load script -->
+
 		<script src="index.js"></script>
 	</body>
 </html>

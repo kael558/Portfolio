@@ -27,11 +27,7 @@ In phase two, I implemented the designs using an interactive web-based platform 
 
 We communicated with the Carleton Institutional Research & Planning Team about potential issues with the dataset, contributing to a complete system overhaul. We presented our project to them and suggested important demographic categories to collect.
 
-We also wrote a paper detailing our project, for the Visualizing for Social Good workshop. Despite not being accepted, I gained valuable feedback for future paper submissions.
-
-## <span> Skills </span>
-
-JavaScript, HTML, CSS, D3, Requirements, Written Communication, Verbal Communication, Data wrangling, Tableau
+We also wrote a [paper](images/visualizing_diversity/EDI_Visualization_Design.pdf) detailing our project, for the Visualizing for Social Good workshop. Despite not being accepted, I gained valuable feedback for future paper submissions.
 
 ## <span> Links </span>
 
