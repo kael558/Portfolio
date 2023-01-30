@@ -495,7 +495,7 @@ projects.push(
 		"Developed a question answering tool that can be seamlessly integrated into any website. It provides a convenient way to search for information in a website and returns answers in a clear and comprehensible format, along with relevant sources.",
 		["Web Crawling", "LLM", "Vector Database", "Generation", "Embeddings"],
 		["Python", "Scrapy", "AI21", "Streamlit", "Annoy", "Git"],
-		"images/web_indexer/image.PNG",
+		"images/web_indexer/image.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/automating_anno.md"
 	)
 );
@@ -536,7 +536,7 @@ projects.push(
 			"ReactJS",
 			"NodeJS",
 		],
-		"images/wilderness_survival_app/card.PNG",
+		"images/wilderness_survival_app/card.png",
 		null
 	)
 );
