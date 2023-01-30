@@ -442,7 +442,7 @@ projects.push(
 			"Scikit-learn",
 			"umap",
 		],
-		"images/rp_ss/semantic_search.PNG",
+		"images/rp_ss/semantic_search.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/semantic_searcher.md"
 	)
 );
