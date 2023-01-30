@@ -32,7 +32,7 @@ We collected 500 abstracts of 5 subjects from [arXiv](https://arxiv.org/)'s API.
 
 ![Implementation](images/rp_ss/semantic_search.png)
 
-we reduced the dimensions of the embeddings using UMAP and plotted them on a 2-D plot.
+We reduced the dimensions of the embeddings using UMAP and plotted them on a 2-D plot.
 
 We conducted a hierarchical clustering analysis on the plotted points, analyzing the word frequency within each cluster. The user was given the option to determine the number of clusters to display, enabling identification of the clusters and understanding of their meaning.
 

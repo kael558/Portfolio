@@ -95,20 +95,6 @@ const skill_to_tech_map = {
 	"Gradient Boost": ["Scikit-learn"],
 	"Stochastic Gradient Boosting": ["Scikit-learn"],
 
-	Languages: [
-		"Python",
-		"C",
-		"C++",
-		"Java",
-		"JavaScript",
-		"SmallTalk",
-		"Racket",
-		"C#",
-		"MATLAB",
-		"SQL",
-		"VBA",
-	],
-
 	Video: ["FFmpeg"],
 
 	OCR: ["Tesseract"],
@@ -150,6 +136,20 @@ const skill_to_tech_map = {
 		"RLlib",
 	],
 	"Monte Carlo Tree Search": ["OpenAI Gym", "TensorFlow", "RLLab", "RLlib"],
+
+	Languages: [
+		"Python",
+		"C",
+		"C++",
+		"Java",
+		"JavaScript",
+		"SmallTalk",
+		"Racket",
+		"C#",
+		"MATLAB",
+		"SQL",
+		"VBA",
+	],
 };
 
 const skills = {
@@ -180,6 +180,7 @@ const skills = {
 	], //https://www.browserstack.com/guide/what-are-the-different-types-of-software-engineer-roles
 
 	//2nd
+
 	Skills: ["Multi-threading", "Algorithms & Data Structures"],
 	NLP: ["LLM", "TF-IDF", "Vector Database", "Semantic Search"],
 	"Computer Vision": [
@@ -227,6 +228,7 @@ const skills = {
 	],
 
 	//3rd
+
 	"Monte Carlo": [
 		"Monte Carlo Policy Evaluation",
 		"Monte Carlo Control",
@@ -286,18 +288,84 @@ for (let skill of Object.keys(skill_to_tech_map)) full_skill_set.add(skill);
 
 for (let skill of Object.keys(skills)) full_skill_set.add(skill);
 
+const used_tech_set = new Set();
+
+const used_skill_set = new Set();
+
+console.log(get_parent_skills_from_tech("Python"));
+
+function get_parent_skills_from_tech(start_tech) {
+	let visited_set = new Set();
+
+	for (const [parent_skill, child_techs] of Object.entries(skill_to_tech_map)) {
+		if (child_techs.includes(start_tech)) {
+			visited_set.add(parent_skill);
+		}
+	}
+
+	let changed = true;
+	while (changed) {
+		changed = false;
+		for (const [parent_skill, child_skills] of Object.entries(
+			skill_to_tech_map
+		)) {
+			if (visited_set.has(parent_skill)) {
+				continue;
+			}
+
+			for (const skill of visited_set) {
+				if (child_skills.includes(skill)) {
+					visited_set.add(parent_skill);
+					changed = true;
+				}
+			}
+		}
+	}
+	return visited_set;
+}
+
+function get_parent_skills_from_skill(start_skill) {
+	let visited_set = new Set([start_skill]);
+	let changed = true;
+	while (changed) {
+		changed = false;
+		for (const [parent_skill, child_skills] of Object.entries(skills)) {
+			if (visited_set.has(parent_skill)) {
+				continue;
+			}
+
+			for (const skill of visited_set) {
+				if (child_skills.includes(skill)) {
+					visited_set.add(parent_skill);
+					changed = true;
+				}
+			}
+		}
+	}
+	return visited_set;
+}
+
 class Project {
 	constructor(title, short_desc, skills, tech, img, md_file) {
 		this.title = title;
 		this.short_desc = short_desc;
 
 		for (let skill of skills) {
+			for (let parent_skill of get_parent_skills_from_skill(skill)) {
+				used_skill_set.add(parent_skill);
+			}
+
 			if (!full_skill_set.has(skill)) {
 				console.log("Error: skill does not exist: " + skill);
 			}
 		}
 
 		for (let t of tech) {
+			for (let parent_skill of get_parent_skills_from_tech(t)) {
+				used_skill_set.add(parent_skill);
+			}
+
+			used_tech_set.add(t);
 			if (!full_tech_set.has(t)) {
 				console.log("Error: " + title + " tech does not exist: " + t);
 			}
@@ -309,20 +377,20 @@ class Project {
 	}
 
 	render_page() {
-		project_page.innerHTML = "Loading...";
+		project_page_content.innerHTML = "Loading...";
 
 		fetch(this.md_file)
 			.then((response) => response.text())
 			.then((text) => {
-				project_page.innerHTML = "";
+				project_page_content.innerHTML = "";
 				const htmlContent = document.createElement("div");
 				htmlContent.innerHTML = converter.makeHtml(text);
-				project_page.appendChild(htmlContent);
+				project_page_content.appendChild(htmlContent);
 
 				// do something with the HTML, such as adding it to the DOM
 			})
 			.catch((error) => {
-				project_page.innerHTML =
+				project_page_content.innerHTML =
 					"Error loading content... This should never happen but it did. Please try again later.";
 				console.error("There was an error!", error);
 			});
@@ -362,7 +430,18 @@ projects.push(
 		"Research Paper Semantic Search and Clustering",
 		"Developed a tool for semantic search and clustering of research papers that is adaptable to various data sets and can handle large volumes, resulting in significant time savings for research",
 		["Hierarchical Clustering", "LLM", "NLP", "Vector Database", "Embeddings"],
-		["Python", "Cohere", "Streamlit", "Annoy", "nltk", "Git"],
+		[
+			"Python",
+			"Cohere",
+			"Streamlit",
+			"Annoy",
+			"nltk",
+			"Git",
+			"Pandas",
+			"NumPy",
+			"Scikit-learn",
+			"umap",
+		],
 		"images/rp_ss/semantic_search.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/semantic_searcher.md"
 	)
@@ -372,7 +451,14 @@ projects.push(
 	new Project(
 		"Stable Diffusion Creator Tool",
 		"Created an interface that integrated Stable Diffusion models, allowing users to efficiently create videos with interpolation from specific images and prompts ",
-		["API", "Stable Diffusion", "Web Hosting", "Visualization", "Frontend"],
+		[
+			"API",
+			"Stable Diffusion",
+			"Web Hosting",
+			"Visualization",
+			"Frontend",
+			"Video",
+		],
 		[
 			"Python",
 			"Hugging Face Spaces",
@@ -384,6 +470,8 @@ projects.push(
 			"FFmpeg",
 			"Github Pages",
 			"Git",
+			"Runway",
+			"Stable Diffusion",
 		],
 		"images/sd_tool/stablediffusion.png",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/sd_creator_tool.md"
@@ -395,7 +483,7 @@ projects.push(
 		"Automated Annotations with Zero-Shot",
 		"Developed a tool to accelerate the data annotation process. Users may download images given a caption, predict annotations based on user input labels and verify them",
 		["MLOps", "Zero-shot Model", "Object Detection", "Cloud", "API"],
-		["Python", "ZenML", "GLIPv2", "AWS", "Git"],
+		["Python", "ZenML", "GLIPv2", "AWS", "Git", "Label Studio"],
 		"images/anno_zenml/interface.jpg",
 		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/automating_anno.md"
 	)
@@ -438,12 +526,15 @@ projects.push(
 		],
 		[
 			"Figma",
+			"JavaScript",
 			"TypeScript",
 			"React Native",
 			"Expo Go",
 			"MongoDB",
 			"Jira",
 			"Git",
+			"ReactJS",
+			"NodeJS",
 		],
 		"images/wilderness_survival_app/card.png",
 		null
@@ -465,9 +556,11 @@ projects.push(
 			"Template Engine",
 			"Web Hosting",
 			"Testing",
+			"CRUDRepository",
 		],
 		[
 			"Java",
+			"SQL",
 			"Spring Boot",
 			"SQLite",
 			"TravisCI",
@@ -476,6 +569,9 @@ projects.push(
 			"Hystrix",
 			"Thymeleaf",
 			"junit",
+			"JavaScript",
+			"HTML",
+			"CSS",
 		],
 		"images/shopify/card.png",
 		null
@@ -494,7 +590,15 @@ projects.push(
 			"GCP",
 			"Data Wrangling",
 		],
-		["Java", "Android Studio", "GDAL", "Firebase", "Google Places API"],
+		[
+			"Java",
+			"Android Studio",
+			"GDAL",
+			"Firebase",
+			"Google Places API",
+			"Git",
+			"GCP",
+		],
 		"images/parkour_map/card.jpg",
 		null
 	)
@@ -511,7 +615,7 @@ projects.push(
 			"Version Control",
 			"CNN",
 		],
-		["Java", "Akka", "Deeplearning4j", "Selenium"],
+		["Java", "Akka", "Deeplearning4j", "Selenium", "Git"],
 		"images/minesweeper/card.png",
 		null
 	)
@@ -522,7 +626,7 @@ projects.push(
 		"Data Collection",
 		"Automated data scraping using AWS Lambda, S3 and CloudWatch events to improve accuracy and consistency of data",
 		["Data Collection", "Web Scraping", "Cloud", "Version Control"],
-		["Python", "AWS", "requests"],
+		["Python", "AWS", "requests", "Git"],
 		"images/data_collection/card.jpg",
 		null
 	)
@@ -533,7 +637,7 @@ projects.push(
 		"Optical Character Recognizer",
 		"Created a tool to help users easily extract text from images using OCR",
 		["OCR", "Computer Vision", "Version Control"],
-		["Java", "Tesseract"],
+		["Java", "Tesseract", "Git"],
 		"images/ocr/card.jpeg",
 		null
 	)
@@ -549,7 +653,7 @@ projects.push(
 			"Reinforcement Learning",
 			"Algorithms & Data Structures",
 		],
-		["Java"],
+		["Java", "Git"],
 		"images/tictactoe/card.png",
 		null
 	)
@@ -587,27 +691,43 @@ function render_project_highlights() {
 		.text((d) => d.short_desc);
 }
 
-let home_button = document.getElementById("home-button");
-let projects_button = document.getElementById("projects-button");
-let see_projects_link = document.getElementById("see-projects");
+let navigation_buttons = document.getElementsByClassName("navigation");
 
-let blog_button = document.getElementById("blog-button");
-let publications_button = document.getElementById("publications-button");
+function set_navigation_link_for_button(name, page) {
+	let navigation_on_click = function () {
+		for (let navigation_button of navigation_buttons) {
+			if (navigation_button.classList.contains(name)) {
+				navigation_button.classList.add("active");
+			} else {
+				navigation_button.classList.remove("active");
+			}
+		}
+
+		navigate(page);
+		return false;
+	};
+
+	let buttons = document.getElementsByClassName(name);
+	for (let button of buttons) {
+		button.onclick = navigation_on_click;
+	}
+}
+
+set_navigation_link_for_button("home-button", "home");
+set_navigation_link_for_button("projects-button", "projects");
+set_navigation_link_for_button("blog-button", "blog");
+set_navigation_link_for_button("publications-button", "publications");
 
 let home_page = document.getElementById("home-page");
 let projects_page = document.getElementById("projects-page");
 let blog_page = document.getElementById("blog-page");
 let publications_page = document.getElementById("publications-page");
 let project_page = document.getElementById("project-page");
-
-home_button.onclick = () => navigate("home");
-projects_button.onclick = () => navigate("projects");
-see_projects_link.onclick = () => navigate("projects");
-blog_button.onclick = () => navigate("blog");
-publications_button.onclick = () => navigate("publications");
+let project_page_content = document.getElementById("project-page-content");
 
 let parent_skills = [];
 
+let selected_skill_parent = null;
 let selected_skill = "None";
 let selected_tech = new Set(["All"]);
 
@@ -616,25 +736,68 @@ function intersect(a, b) {
 }
 
 function get_filtered_projects(selected_skill, selected_tech) {
+	let child_skills = get_all_child_skills_from_skill(selected_skill);
+
 	let tech = get_tech_from_skill(selected_skill);
 
 	if (!selected_tech.has("All")) {
 		tech = intersect(selected_tech, tech);
 	}
 
-	let filtered_projects = projects.filter(
-		(p) => intersect(p.tech, tech).size > 0
-	);
+	//const isInSelectedTechSet = (p_tech) => tech.has(p_tech);
+	//const isInSelectedSkillSet = (p_skill) => child_skills.has(p_skill);
+
+	/*
+	case 1: no skill selected, no tech select -> show all under skill and tech
+	case 2: skill selected, no tech select -> show all under skill (disregard tech)
+	case 3: no skill selected, tech selected -> show all under tech
+	case 4: skill selected, tech selected -> show all under skill and tech
+	*/
+
+	let filtered_projects;
+	if (selected_tech.has("All")) {
+		// no tech selected
+
+		if (selected_skill == "Languages") {
+			//special case for languages
+			filtered_projects = projects.filter(
+				(p) =>
+					intersect(p.tech, tech).size > 0 ||
+					intersect(p.skills, child_skills).size > 0
+			);
+		} else {
+			filtered_projects = projects.filter(
+				// case 1 & 2
+				(p) => intersect(p.skills, child_skills).size > 0
+			);
+		}
+	} else {
+		// tech selected
+
+		if (selected_skill_parent == null) {
+			//no skill selected
+			filtered_projects = projects.filter(
+				(p) => intersect(p.tech, tech).size > 0
+			);
+		} else {
+			filtered_projects = projects.filter(
+				(p) =>
+					intersect(p.tech, tech).size > 0 ||
+					intersect(p.skills, child_skills).size > 0
+			);
+		}
+	}
+
 	return filtered_projects;
 }
 
 document.getElementById("back").onclick = () => {
+	selected_skill_parent = null;
 	selected_skill = parent_skills.pop();
 	render_projects_page();
 };
 
 function render_projects_page() {
-	console.log("render page");
 	render_navigation();
 
 	let filtered_projects = get_filtered_projects(selected_skill, selected_tech);
@@ -643,26 +806,24 @@ function render_projects_page() {
 }
 
 function get_all_child_skills_from_skill(selected_skill) {
-	let current_skills =
-		selected_skill in skills ? [...skills[selected_skill]] : [selected_skill];
+	let current_skills = [selected_skill];
 	let skill_set = new Set();
 
 	while (current_skills.length > 0) {
 		let skill = current_skills.shift();
 		if (skill in skills) {
 			current_skills = current_skills.concat(skills[skill]);
-		} else {
-			skill_set.add(skill);
 		}
+		skill_set.add(skill);
 	}
-
+	skill_set.delete("None");
 	return skill_set;
 }
 
 function get_tech_by_category(selected_skill) {
 	const tech_by_category = new Object();
 	let current_skills =
-		selected_skill in skills ? [...skills[selected_skill]] : [selected_skill];
+		selected_skill in skills ? skills[selected_skill] : [selected_skill];
 	for (let skill of current_skills) {
 		tech_by_category[skill] = get_tech_from_skill(skill);
 	}
@@ -670,8 +831,7 @@ function get_tech_by_category(selected_skill) {
 }
 
 function get_tech_from_skill(selected_skill) {
-	let current_skills =
-		selected_skill in skills ? [...skills[selected_skill]] : [selected_skill];
+	let current_skills = [selected_skill];
 	let tech_set = new Set();
 
 	while (current_skills.length > 0) {
@@ -679,7 +839,6 @@ function get_tech_from_skill(selected_skill) {
 		if (skill in skills) {
 			current_skills = current_skills.concat(skills[skill]);
 		} else {
-			console.log(skill);
 			for (let tech of skill_to_tech_map[skill]) {
 				tech_set.add(tech);
 			}
@@ -710,51 +869,84 @@ function render_navigation() {
 	let table = document.getElementById("navigation-table");
 	table.appendChild(row_header);
 
-	let tech_by_category = get_tech_by_category(selected_skill);
+	let tech_by_category = get_tech_by_category(
+		selected_skill in skills ? selected_skill : selected_skill_parent
+	);
+
 	let current_skills =
-		selected_skill in skills ? skills[selected_skill] : [selected_skill];
+		skills[selected_skill in skills ? selected_skill : selected_skill_parent];
 	for (let skill of current_skills) {
 		const skill_cell = document.createElement("td");
 		const skill_cell_button = document.createElement("button");
+
+		skill_cell_button.classList.add("project-filter-button");
+		if (selected_skill == skill) {
+			skill_cell_button.classList.add("active");
+		}
 		skill_cell_button.innerText = skill;
-		skill_cell_button.onclick = () => {
-			if (!(skill in skills)) {
-				//selected_skill = skill;
+		if (!used_skill_set.has(skill)) {
+			skill_cell_button.classList.add("empty");
+		} else {
+			skill_cell_button.onclick = () => {
+				if (selected_skill_parent == null && !(skill in skills)) {
+					selected_skill_parent = selected_skill;
+					selected_skill = skill;
+				} else if (
+					selected_skill_parent != null &&
+					!(skill in skills) &&
+					selected_skill != skill
+				) {
+					selected_skill = skill;
+				} else if (selected_skill == skill) {
+					selected_skill = selected_skill_parent;
+					selected_skill_parent = null;
+				} else {
+					if (selected_skill_parent == null) {
+						parent_skills.push(selected_skill);
+					} else {
+						parent_skills.push(selected_skill_parent);
+						selected_skill_parent = null;
+					}
+
+					selected_skill = skill;
+					selected_tech = new Set(["All"]);
+				}
+
+				render_projects_page();
 				return false;
-			} else {
-				parent_skills.push(selected_skill);
-				selected_skill = skill;
-			}
-			selected_tech = new Set(["All"]);
+			};
+		}
 
-			render_projects_page();
-			return false;
-		};
 		skill_cell.appendChild(skill_cell_button);
-
+		//console.log(used_skill_set);
+		//console.log(used_tech_set);
 		const tech_cell = document.createElement("td");
-
 		for (let tech of tech_by_category[skill]) {
 			const button = document.createElement("button");
 			button.innerText = tech;
 			if (selected_tech.has(tech)) {
 				button.classList.add("active");
 			}
-
-			button.onclick = () => {
-				if (selected_tech.has("All")) {
-					selected_tech.delete("All");
-					selected_tech.add(tech);
-				} else if (selected_tech.has(tech)) {
-					selected_tech.delete(tech);
-					if (selected_tech.size == 0) {
-						selected_tech.add("All");
+			button.classList.add("project-filter-button");
+			if (!used_tech_set.has(tech)) {
+				button.classList.add("empty");
+			} else {
+				button.onclick = () => {
+					if (selected_tech.has("All")) {
+						selected_tech.delete("All");
+						selected_tech.add(tech);
+					} else if (selected_tech.has(tech)) {
+						selected_tech.delete(tech);
+						if (selected_tech.size == 0) {
+							selected_tech.add("All");
+						}
+					} else {
+						selected_tech.add(tech);
 					}
-				} else {
-					selected_tech.add(tech);
-				}
-				render_projects_page();
-			};
+					render_projects_page();
+				};
+			}
+
 			tech_cell.appendChild(button);
 		}
 
@@ -769,8 +961,7 @@ function render_navigation() {
 function render_projects(projects) {
 	const t = d3.transition().duration(750);
 
-	let project_groups = d3
-		.select("#projects-list")
+	d3.select("#projects-list")
 		.selectAll("div.row")
 		.data(projects, (d) => d.title)
 		.join(
@@ -784,10 +975,10 @@ function render_projects(projects) {
 					});
 
 				project_group
-					.style("transform", "scale(1 0)")
+					.style("opacity", "0")
 					.transition()
-					.duration(750)
-					.style("transform", "scale(1 1)");
+					.duration(250)
+					.style("opacity", "1");
 
 				project_group
 					.append("div")
@@ -824,7 +1015,7 @@ function render_projects(projects) {
 			(exit) =>
 				exit
 					.transition()
-					.duration(750)
+					.duration(250)
 					.style("transform", "scale(1, 0)")
 					.style("opacity", 0)
 					.remove()
@@ -832,41 +1023,34 @@ function render_projects(projects) {
 }
 
 function navigate(page, project) {
-	if (project && project.md_file == null) return;
-
-	home_button.classList.remove("active");
-	projects_button.classList.remove("active");
-	blog_button.classList.remove("active");
-	publications_button.classList.remove("active");
-
+	if (project && project.md_file == null) {
+		alert("More information on this project will be available soon.");
+		return;
+	}
 	if (page == "home") {
 		home_page.style.display = "flex";
 		projects_page.style.display = "none";
 		blog_page.style.display = "none";
 		publications_page.style.display = "none";
 		project_page.style.display = "none";
-		home_button.classList.add("active");
 	} else if (page == "projects") {
 		home_page.style.display = "none";
 		projects_page.style.display = "block";
 		blog_page.style.display = "none";
 		publications_page.style.display = "none";
 		project_page.style.display = "none";
-		projects_button.classList.add("active");
 	} else if (page == "blog") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
 		blog_page.style.display = "block";
 		publications_page.style.display = "none";
 		project_page.style.display = "none";
-		blog_button.classList.add("active");
 	} else if (page == "publications") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
 		blog_page.style.display = "none";
 		publications_page.style.display = "block";
 		project_page.style.display = "none";
-		publications_button.classList.add("active");
 	} else if (page == "project") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
@@ -881,4 +1065,4 @@ function navigate(page, project) {
 
 render_project_highlights();
 render_projects_page();
-navigate("projects");
+navigate("home");

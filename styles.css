@@ -163,7 +163,7 @@ h2 span {
 }
 
 .project-img {
-	transition-duration: 0.2s;
+	transition-duration: 0.1s;
 }
 
 .project-img:hover {
@@ -204,10 +204,57 @@ td {
 	padding: 5px;
 }
 
-button.active {
+.project-filter-button {
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	outline: none;
+	background-color: whitesmoke;
+}
+
+.project-filter-button.empty {
+	background-color: red;
+}
+
+.project-filter-button:hover {
+	opacity: 0.5;
+}
+
+.project-filter-button.empty:hover {
+	opacity: 1;
+}
+
+.project-filter-button.active {
 	background-color: green;
 }
 
 #projects-page {
 	padding-bottom: 300px;
 }
+
+/* Back button */
+.back-button {
+	padding: 5px 0 5px 10px;
+	width: 80px; /* modified by label length */
+	overflow: auto;
+}
+.label {
+	display: block;
+	width: auto;
+	line-height: 26px;
+	font-size: 14px;
+	font-weight: 900;
+	text-decoration: none;
+	text-align: center;
+
+	background-color: rgba(239, 239, 239, 1);
+
+	border: 1px solid #bcbcbc;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.label:hover {
+	color: hsl(210, 100%, 40%);
+}
+
+/* */

@@ -18,11 +18,13 @@ The primary goal was to design an interactive visualization on a web-based platf
 ## <span> Implementation </span>
 
 ![Low Fidelity Vizualizations](images/visualizing_diversity/low_fidelity.png)
+
 In phase one, I created low to medium-fidelity visualizations and collaborated with an EDI research specialist to discuss missing attributes and improve designs. Finally, I cleaned the CODC data using Python.
 
 For the complete Design Rationale, see the GitHub repo readme.
 
 ![Development Process](images/visualizing_diversity/development.png)
+
 In phase two, I implemented the designs using an interactive web-based platform and the d3 library.
 
 We communicated with the Carleton Institutional Research & Planning Team about potential issues with the dataset, contributing to a complete system overhaul. We presented our project to them and suggested important demographic categories to collect.
