@@ -1,5 +1,5 @@
 const skill_to_tech_map = {
-	"Hypothesis Testing": ["pingouin", "statsmodel", "scipy"],
+	"Hypothesis Testing": ["pingouin", "statsmodels", "scipy"],
 	Deployment: ["Streamlit", "Hugging Face Spaces", "Gradio", "FastAPI"],
 
 	"Mobile App Development": [
@@ -25,7 +25,7 @@ const skill_to_tech_map = {
 		"Excel",
 		"GDAL",
 	],
-	"Exploratory Analysis": [
+	"Exploratory Data Analysis": [
 		"Jupyter Notebooks",
 		"Pandas",
 		"NumPy",
@@ -162,7 +162,7 @@ const skills = {
 		"Computer Vision",
 		"Data Collection",
 		"Data Wrangling",
-		"Exploratory Analysis",
+		"Exploratory Data Analysis",
 		"Deep Learning",
 		"Machine Learning",
 		"Hypothesis Testing",
@@ -687,6 +687,45 @@ projects.push(
 			"GitHub Actions",
 		],
 		"images/cs50_web/card.png",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"DataCamp's Data Scientist with Python Course",
+		"This course covers popular Python libraries for importing, cleaning, manipulating, and visualizing data. It uses real-world datasets to teach statistical and machine learning techniques necessary for hypothesis testing and building predictive models. ",
+		[
+			"Hypothesis Testing",
+			"Machine Learning",
+			"Data Wrangling",
+			"Exploratory Data Analysis",
+			"TF-IDF",
+			"Data Science",
+			"Statistics",
+			"Visualization",
+			"Linear Regression",
+			"Logistic Regression",
+			"Ensemble Learning",
+			"Clustering",
+			"SVM",
+			"Decision Tree",
+			"KNN",
+			"Dimensionality Reduction",
+			"K-Means",
+			"Hierarchical Clustering",
+		],
+		[
+			"Python",
+			"Pandas",
+			"NumPy",
+			"Seaborn",
+			"pingouin",
+			"statsmodels",
+			"scipy",
+			"Scikit-learn",
+		],
+		"images/datacamp/card.png",
 		null
 	)
 );
