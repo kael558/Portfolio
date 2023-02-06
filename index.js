@@ -41,7 +41,7 @@ const skill_to_tech_map = {
 	"Version Control": ["Git"],
 	"JS Frameworks": ["NodeJS", "ReactJS", "ExpressJS"],
 	"Responsive Design": ["Bootstrap", "jQuery"],
-	"Web Hosting": ["Github Pages", "Heroku", "Cloud"],
+	"Web Hosting": ["Github Pages", "Heroku"],
 	"Multi-threading": ["Akka"],
 	"Algorithms & Data Structures": [],
 	"DL Frameworks": [
@@ -56,7 +56,7 @@ const skill_to_tech_map = {
 	"DL experiment tracking": ["Weights & Biases", "Vertex AI"],
 	MLOps: ["ZenML"],
 
-	"CI/CD": ["TravisCI", "CircleCI", "Jenkins"],
+	"CI/CD": ["TravisCI", "CircleCI", "Jenkins", "GitHub Actions"],
 	Containers: ["Docker"],
 	"Monitoring Tools": ["Hystrix"],
 
@@ -228,7 +228,6 @@ const skills = {
 	],
 
 	//3rd
-
 	"Monte Carlo": [
 		"Monte Carlo Policy Evaluation",
 		"Monte Carlo Control",
@@ -556,7 +555,6 @@ projects.push(
 			"Template Engine",
 			"Web Hosting",
 			"Testing",
-			"CRUDRepository",
 		],
 		[
 			"Java",
@@ -655,6 +653,40 @@ projects.push(
 		],
 		["Java", "Git"],
 		"images/tictactoe/card.png",
+		null
+	)
+);
+
+projects.push(
+	new Project(
+		"Harvard CS50's Web Development Course with Python and Javascript",
+		"Developed several projects with full stack tools and principles including database design, scalability, security, and user experience",
+		[
+			"Frontend Languages",
+			"Web Frameworks",
+			"SQL",
+			"CI/CD",
+			"Version Control",
+			"Template Engine",
+			"Web Hosting",
+			"Testing",
+		],
+		[
+			"Python",
+			"JavaScript",
+			"HTML",
+			"CSS",
+			"SQL",
+			"Django",
+			"Bootstrap",
+			"jQuery",
+			"SQLite",
+			"PostgreSQL",
+			"GDAL",
+			"Selenium",
+			"GitHub Actions",
+		],
+		"images/cs50_web/card.png",
 		null
 	)
 );
