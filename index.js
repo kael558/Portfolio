@@ -947,6 +947,10 @@ function render_navigation() {
 	let current_skills =
 		skills[selected_skill in skills ? selected_skill : selected_skill_parent];
 	for (let skill of current_skills) {
+		if (!used_skill_set.has(skill)) {
+			continue;
+		}
+
 		const skill_cell = document.createElement("td");
 		const skill_cell_button = document.createElement("button");
 
@@ -993,6 +997,10 @@ function render_navigation() {
 		//console.log(used_tech_set);
 		const tech_cell = document.createElement("td");
 		for (let tech of tech_by_category[skill]) {
+			if (!used_tech_set.has(tech)) {
+				continue;
+			}
+
 			const button = document.createElement("button");
 			button.innerText = tech;
 			if (selected_tech.has(tech)) {
