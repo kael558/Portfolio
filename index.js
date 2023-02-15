@@ -495,7 +495,7 @@ projects.push(
 		["Web Crawling", "LLM", "Vector Database", "Generation", "Embeddings"],
 		["Python", "Scrapy", "AI21", "Streamlit", "Annoy", "Git"],
 		"images/web_indexer/image.png",
-		"https://raw.githubusercontent.com/kael558/Portfolio/main/markdown/automating_anno.md"
+		"https://github.com/kael558/Portfolio/blob/main/markdown/web_indexer.md"
 	)
 );
 
