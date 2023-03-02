@@ -1119,7 +1119,7 @@ function render_blogs(){
 					.append("div")
 					.classed("row", true)
 					.on("click", function (e, d) {
-						navigate("blog", d);
+						navigate("blog-page", d);
 						return false;
 					});
 
@@ -1236,6 +1236,7 @@ function render_projects(projects) {
 }
 
 function navigate(page, entry) {
+	console.log("Navigating to " + page);
 	if (entry) {
 		if (entry.md_file == null){
 			alert("More information on this project will be available soon.");
@@ -1274,7 +1275,7 @@ function navigate(page, entry) {
 		blog_page.style.display = "none";
 		publications_page.style.display = "none";
 		md_page.style.display = "block";
-	} else if (page == "blog") {
+	} else if (page == "blog-page") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
 		blog_page.style.display = "none";
