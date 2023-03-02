@@ -5,11 +5,11 @@
 
 They provide LLM's as a service that may be used in a variety of NLP tasks. 
 
-Featured in a [post](https://www.ai21.com/blog/first-hackathon-winning-projects)
+I was featured on [AI21's blog post](https://www.ai21.com/blog/first-hackathon-winning-projects)
 
-## <span> Project Video </span>
+## <span> Project </span>
+The submission is available [here](https://lablab.ai/event/ai21-labs-hackathon/olympia/webindexer)
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
-
+The project video is available here:
 [![Web Indexer](https://img.youtube.com/vi/2jnez00lH84/0.jpg)](https://www.youtube.com/watch?v=2jnez00lH84 "WebIndexer")
 

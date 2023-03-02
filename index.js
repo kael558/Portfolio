@@ -766,7 +766,7 @@ blogs.push(new Blog(
 	"Generative AI Hackathon",
 	"A record of how I won AI21 Lab's Hackathon.",
 	"images/web_indexer/image.png",
-	"blogs/generative_ai_hackathon.md"
+	"https://raw.githubusercontent.com/kael558/Portfolio/main/blog/AI21_win.md"
 ));
 
 function render_blog_highlights(){
