@@ -18,7 +18,7 @@
 			<li><a href="#" class="home-button navigation active">Home</a></li>
 			<li><a href="#" class="projects-button navigation">Projects</a></li>
 	
-			<li><a href="#" class="blog-button navigation" style="display: none;">Blog</a></li>
+			<li><a href="#" class="blog-button navigation">Blog</a></li>
 			<li>
 				<a href="#" class="publications-button navigation" style="display: none;">Publications</a>
 			</li>
@@ -111,16 +111,25 @@
 						style="margin-top: 30px"
 					></div>
 					<button
-						id="see-projects"
-						class="projects-button"
+						class="projects-button see-more"
 						style="margin-top: 20px"
 					>
 						See more...
 					</button>
-					<div class="col-1" style="margin-top: 20px">
-						<h2><span>BLOG</span></h2>
-						<p>In the works...</p>
-					</div>
+					
+					<h2><span>BLOG</span></h2>
+					<div
+						id="blogs-truncated"
+						class="container"
+						style="margin-top: 30px"
+					></div>
+					<button
+						class="blog-button see-more"
+						style="margin-top: 20px"
+					>
+						See more...
+					</button>
+					
 
 					<div class="col-1" style="margin-top: 40px">
 						<h2><span>PUBLICATIONS</span></h2>
@@ -161,18 +170,20 @@
 
 			<div id="blog-page" class="container">
 				<h1>BLOG POSTS</h1>
+				<div id="blogs-list"></div>
 			</div>
 
 			<div id="publications-page" class="container">
 				<h1>PUBLICATIONS</h1>
 			</div>
 
-			<div id="project-page">
+			<div id="md-page">
+				<!--
 				<div class="back-button">
 					<a href="#" class="label projects-button">Back</a>
 				</div>
-
-				<div id="project-page-content"></div>
+				-->
+				<div id="md-page-content"></div>
 			</div>
 		</div>
 

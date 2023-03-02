@@ -376,20 +376,20 @@ class Project {
 	}
 
 	render_page() {
-		project_page_content.innerHTML = "Loading...";
+		md_page_content.innerHTML = "Loading...";
 
 		fetch(this.md_file)
 			.then((response) => response.text())
 			.then((text) => {
-				project_page_content.innerHTML = "";
+				md_page_content.innerHTML = "";
 				const htmlContent = document.createElement("div");
 				htmlContent.innerHTML = converter.makeHtml(text);
-				project_page_content.appendChild(htmlContent);
+				md_page_content.appendChild(htmlContent);
 
 				// do something with the HTML, such as adding it to the DOM
 			})
 			.catch((error) => {
-				project_page_content.innerHTML =
+				md_page_content.innerHTML =
 					"Error loading content... This should never happen but it did. Please try again later.";
 				console.error("There was an error!", error);
 			});
@@ -730,6 +730,77 @@ projects.push(
 	)
 );
 
+class Blog{
+	constructor(title, short_desc,  img, md_file) {
+		this.title = title;
+		this.short_desc = short_desc;
+		this.img = img;
+		this.md_file = md_file;
+	}
+
+	render_page() {
+		md_page_content.innerHTML = "Loading...";
+
+		fetch(this.md_file)
+			.then((response) => response.text())
+			.then((text) => {
+				md_page_content.innerHTML = "";
+				const htmlContent = document.createElement("div");
+				htmlContent.innerHTML = converter.makeHtml(text);
+				md_page_content.appendChild(htmlContent);
+
+				// do something with the HTML, such as adding it to the DOM
+			})
+			.catch((error) => {
+				md_page_content.innerHTML =
+					"Error loading content... This should never happen but it did. Please try again later.";
+				console.error("There was an error!", error);
+			});
+	}
+
+
+}
+
+const blogs = [];
+blogs.push(new Blog(
+	"Generative AI Hackathon",
+	"A record of how I won AI21 Lab's Hackathon.",
+	"images/web_indexer/image.png",
+	"blogs/generative_ai_hackathon.md"
+));
+
+function render_blog_highlights(){
+	let blog_divs = d3
+		.select("#blogs-truncated")
+		.selectAll("div")
+		.data(blogs.slice(0, 3))
+		.enter()
+		.append("div")
+		.classed("col-3", true)
+		.on("click", function (e, d) {
+			navigate("blog", d);
+			return false;
+		});
+
+	blog_divs
+		.append("p")
+		.classed("project-title", true)
+		.text((d) => d.title);
+
+	blog_divs
+		.append("img")
+		.attr("src", (d) => d.img)
+		.style("width", "100%")
+		.style("height", "170px")
+		.style("border", "0px")
+		.style("border-radius", "5px");
+
+	blog_divs
+		.append("p")
+		.classed("project-desc", true)
+		.text((d) => d.short_desc);
+}
+
 function render_project_highlights() {
 	let project_divs = d3
 		.select("#projects-truncated")
@@ -793,8 +864,8 @@ let home_page = document.getElementById("home-page");
 let projects_page = document.getElementById("projects-page");
 let blog_page = document.getElementById("blog-page");
 let publications_page = document.getElementById("publications-page");
-let project_page = document.getElementById("project-page");
-let project_page_content = document.getElementById("project-page-content");
+let md_page = document.getElementById("md-page");
+let md_page_content = document.getElementById("md-page-content");
 
 let parent_skills = [];
 
@@ -1037,6 +1108,69 @@ function render_navigation() {
 	}
 }
 
+
+function render_blogs(){
+	d3.select("#blogs-list")
+		.selectAll("div.row")
+		.data(blogs, (d) => d.title)
+		.join(
+			(enter) => {
+				let blog_group = enter
+					.append("div")
+					.classed("row", true)
+					.on("click", function (e, d) {
+						navigate("blog", d);
+						return false;
+					});
+
+				blog_group
+					.style("opacity", "0")
+					.transition()
+					.duration(250)
+					.style("opacity", "1");
+
+				blog_group
+					.append("div")
+					.style("width", "15%")
+					.style("float", "left")
+					.classed("project-img", true)
+					.append("img")
+					.attr("src", (d) => d.img)
+					.attr("width", "100%")
+					.style("max-height", "100px");
+
+				let blog_text_divs = blog_group
+					.append("div")
+					.style("width", "83%")
+					.style("float", "left")
+					.style("padding-left", "2%");
+
+					blog_text_divs
+					.append("h4")
+					.text((d) => d.title)
+					.style("margin", "0px");
+
+					blog_text_divs
+					.append("p")
+					.text((d) => d.short_desc)
+					.style("margin", "0px");
+
+				return blog_group;
+			},
+
+			(update) => {
+				return update;
+			},
+			(exit) =>
+				exit
+					.transition()
+					.duration(250)
+					.style("transform", "scale(1, 0)")
+					.style("opacity", 0)
+					.remove()
+		);
+}
+
 function render_projects(projects) {
 	const t = d3.transition().duration(750);
 
@@ -1101,42 +1235,51 @@ function render_projects(projects) {
 		);
 }
 
-function navigate(page, project) {
-	if (project && project.md_file == null) {
-		alert("More information on this project will be available soon.");
-		return;
-	}
+function navigate(page, entry) {
+	if (entry) {
+		if (entry.md_file == null){
+			alert("More information on this project will be available soon.");
+			return;
+		} 
+		entry.render_page()
+	} 
+
 	if (page == "home") {
 		home_page.style.display = "flex";
 		projects_page.style.display = "none";
 		blog_page.style.display = "none";
 		publications_page.style.display = "none";
-		project_page.style.display = "none";
+		md_page.style.display = "none";
 	} else if (page == "projects") {
 		home_page.style.display = "none";
 		projects_page.style.display = "block";
 		blog_page.style.display = "none";
 		publications_page.style.display = "none";
-		project_page.style.display = "none";
+		md_page.style.display = "none";
 	} else if (page == "blog") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
 		blog_page.style.display = "block";
 		publications_page.style.display = "none";
-		project_page.style.display = "none";
+		md_page.style.display = "none";
 	} else if (page == "publications") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
 		blog_page.style.display = "none";
 		publications_page.style.display = "block";
-		project_page.style.display = "none";
+		md_page.style.display = "none";
 	} else if (page == "project") {
 		home_page.style.display = "none";
 		projects_page.style.display = "none";
 		blog_page.style.display = "none";
 		publications_page.style.display = "none";
-		project_page.style.display = "block";
-		project.render_page();
+		md_page.style.display = "block";
+	} else if (page == "blog") {
+		home_page.style.display = "none";
+		projects_page.style.display = "none";
+		blog_page.style.display = "none";
+		publications_page.style.display = "none";
+		md_page.style.display = "block";
 	}
 
 	return false;
@@ -1144,4 +1287,6 @@ function navigate(page, project) {
 
 render_project_highlights();
 render_projects_page();
+render_blogs();
+render_blog_highlights()
 navigate("home");

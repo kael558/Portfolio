@@ -52,13 +52,13 @@ ul#navbar > li {
 }
 
 /* See more buttons */
-#see-projects {
+.see-more {
 	font-size: large;
 	border-radius: 5px;
 	background-color: #acacac;
 }
 
-#see-projects:hover {
+.see-more:hover {
 	background: rgb(114, 114, 114);
 	color: black;
 }
